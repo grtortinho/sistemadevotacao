@@ -1,0 +1,37 @@
+<?php
+
+//$p = new Pessoas($id, $data, $idusuario, $tipo, $nome, $nascimento, $cpf, $rg, $orgao, $celular, $fixo, $status, $segmento, $anexo, $declaracao, $texto);
+$p = $dadoscepc[3];
+if ($p->getTipo() == '0') {
+    echo "<label class='ver'><samp>ELEITOR</samp></label>";
+} else {
+    echo "<label class='ver'><samp>CANDIDATO</samp></label>";
+}
+echo "<label class='ver'>E-Mail: <samp>{$dadoscepc[4]}</samp></label>";
+echo "<label class='ver'>Nome: <samp>{$p->getNome()}</samp></label>";
+echo "<label class='ver'>Nascimento: <samp>{$p->getNascimentoBrasil()}</samp></label>";
+echo "<label class='ver'>CPF: <samp>{$p->getCpf()}</samp></label>";
+echo "<label class='ver'>RG: <samp>{$p->getRg()}</samp></label>";
+echo "<label class='ver'>&Oacute;rg&atilde;o Expedidor: <samp>{$p->getOrgao()}</samp></label>";
+echo "<label class='ver'>Telefone: <samp>{$p->getFixo()}</samp></label>";
+echo "<label class='ver'>Celular: <samp>{$p->getCelular()}</samp></label>";
+echo "<label class='ver'>Segmento: <samp>{$p->getSegmento()->getNome()}</samp></label>";
+echo '<p class="p1">DECLARAÇÕES:</p>';
+foreach ($p->getDeclaracao() as $value) {
+    echo "<label class='ver'><samp>{$value->getNome()}</samp></label>";
+}
+echo "<label class='caixatexto'>CURRÍCULO RESUMIDO DE ATUAÇÃO NO SEGMENTO CULTURAL: <samp>{$p->getTexto()->getCurriculo()}</samp></label>";
+if ($p->getTipo() == '1') {
+    echo "<label class='caixatexto'>PROPOSTA DE ATUAÇÃO NO CONSELHO ESTADUAL DE POLITICA CULTURAL: <samp>{$p->getTexto()->getProposta()}</samp></label>";
+    echo "<label class='caixatexto'>JUSTIFICATIVA DA SUA CANDIDATURA: (3 mil caracteres) <samp>{$p->getTexto()->getJustificativa()}</samp></label>";
+}
+foreach ($p->getAnexo() as $value) {
+    if ($value->getTipo() == 'foto') {
+        echo "<label class='caixatexto'>FOTOGRAFIA DE ROSTO ATUAL:</label>";
+        echo "<img src='{$value->getNome()}' class='fotoce'>";
+    } else {
+        echo "<label class='caixatexto'>DOCUMENTAÇÃO COMPLEMENTAR:<a href='{$value->getNome()}' download>Baixar</a></label>";
+        
+    }
+}
+?>

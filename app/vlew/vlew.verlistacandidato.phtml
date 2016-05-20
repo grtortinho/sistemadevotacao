@@ -1,0 +1,64 @@
+
+<?php
+//$p[] = new Pessoas($id, $data, $idusuario, $tipo, $nome, $nascimento, $cpf, $rg, $orgao, $celular, $fixo, $status, $segmento, $anexo, $declaracao, $texto);
+$p = $dadoscepc[3];
+?>
+<h1 class="titulocad">Lista de candidatos do segmento <?php    echo $dadoscepc[6];?></h1>
+<?php
+
+    foreach ($p as $value) {
+        echo '<div class="candidato">';
+        
+        foreach ($value->getAnexo() as $value2) {
+            if ($value2->getTipo() == 'foto') {
+                echo "<img src='{$value2->getNome()}' class='candidatoimg'>";
+            }
+        }
+        echo '<div class="candidato2">';
+        $date = new DateTime($value->getNascimento()); // data de nascimento
+        $interval = $date->diff(new DateTime()); // data definida
+
+        echo "<p class='candidatonome'>{$value->getNome()}</p>";
+        echo "<p class='candidatoidade'>{$interval->format('%Y Anos')}</p>";
+        echo "<a class='candidatocur' href=''><img src='images/Layout_13.png'><p>Ver Curriculum</p></a>";
+        echo "<a class='candidatopro' href=''><img src='images/Layout_18.png'><p>Ver proposta</p></a>";
+        echo "<a class='candidatojus' href=''><img src='images/Layout_20.png'><p>Ver  justificativa</p></a>";
+        echo "<a class='voto' href='".URLDOM."index.php?url=index/votacao/{$dadoscepc[5][$value->getId()]}'><img src='images/Layout_14.png'><p>Votar</p></a>";
+
+        echo '<div class="dcandidatopro candidatop">';
+        echo "<p>{$value->getTexto()->getProposta()}</p>";
+        echo '</div>';
+        echo '<div class="dcandidatocur candidatop">';
+        echo "<p>{$value->getTexto()->getCurriculo()}</p>";
+        echo '</div>';
+        echo '<div class="dcandidatojus candidatop">';
+        echo "<p>{$value->getTexto()->getJustificativa()}</p>";
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+    }
+
+echo $dadoscepc[4];
+?>
+
+<div class="container">
+  
+  <!-- Trigger the modal wit
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>This is a large modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

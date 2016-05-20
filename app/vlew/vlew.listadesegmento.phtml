@@ -1,0 +1,7 @@
+    <p>SEGMENTO CULTURAL: (somente uma op&ccedil;&atilde;o)</p>   
+    <?php
+    foreach ($dadoscepc[3] as $value) {
+        echo '<a href="index.php?url=index/listafim/' . $value->getId() . '">' . $value->getNome() . '</a><br>' . "\n";
+    }
+    ?>
+    

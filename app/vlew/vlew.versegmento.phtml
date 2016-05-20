@@ -1,0 +1,23 @@
+<?php
+//$p[] = new Triagista($id, $nome, $segmento);
+$p = $dadoscepc[3];
+?>
+<a class="pointer_6" href="index.php?url=cadastro/segmento" class="btn btn-primary">Cadastrar Segmento</a>
+<table class="table table-condensed">
+    <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Alterar</th>
+
+    </tr>
+    <?php
+    foreach ($p as $value) {
+        echo '<tr>';
+        echo "<td>{$value->getId()}</td>";
+        echo "<td>{$value->getNome()}</td>";
+        echo "<td><a href='index.php?url=cadastro/segmentoalterar/{$value->getId()}'>Alterar</a></td>";
+        echo '</tr>';
+    }
+    ?>
+
+</table>

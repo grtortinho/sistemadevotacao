@@ -1,0 +1,30 @@
+
+<?php
+//$p[] = new Pessoas($id, $data, $idusuario, $tipo, $nome, $nascimento, $cpf, $rg, $orgao, $celular, $fixo, $status, $segmento, $anexo, $declaracao, $texto);
+$value = $dadoscepc[3];
+?>
+<h1 class="titulocad">Candidato do segmento <?php    echo $dadoscepc[5];?></h1>
+<?php
+
+    
+        echo '<div class="candidato">';
+        
+        foreach ($value->getAnexo() as $value2) {
+            if ($value2->getTipo() == 'foto') {
+                echo "<img src='{$value2->getNome()}' class='candidatoimg'>";
+            }
+        }
+        echo '<div class="candidato2">';
+        $date = new DateTime($value->getNascimento()); // data de nascimento
+        $interval = $date->diff(new DateTime()); // data definida
+
+        echo "<p class='candidatonome'>{$value->getNome()}</p>";
+        echo "<p class='candidatoidade'>{$interval->format('%Y Anos')}</p>";
+        echo "<p class='candidatoidade'>Você deseja votar nessa pessoa </p>";
+        
+        echo "<a class='voto' href='".URLDOM."index.php?url=index/listafim'><img src='images/Layout_14.png'><p>Não</p></a>";
+        echo "<a class='voto' href='".URLDOM."index.php?url=index/votacao2/{$dadoscepc[4]}'><img src='images/Layout_14.png'><p>Sim</p></a>";
+        echo '</div>';
+        echo '</div>';
+
+?>

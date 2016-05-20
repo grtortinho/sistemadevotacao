@@ -1,0 +1,28 @@
+<h1 class="resfinal">Resultado final</h1>
+<img class="resfinalimg" src="images/barra.png">
+<?php
+foreach ($dadoscepc[2] as $key => $value) {
+    echo '<div class"resfinaldivt"> <h2 class="resfinal2">' . $key . '</h2><div id="resfinaldivv" class="resfinaldivvc">';
+    $i=1;
+    foreach ($value as $value2) {
+        
+        echo '<p class="presfinal'.$i.'">'.$value2[0]->getNome() . ' - ';
+        $total = 0;
+        if (((int) $dadoscepc[3][$key]) > 0 and ( (int) $value2[1]) > 0) {
+            $total = round(100 / (((int) $dadoscepc[3][$key]) / (int) $value2[1]), 2);
+        }
+        $ver='';
+        if($dadoscepc[4]=='3'){
+            $ver='<li><a class="pointer_6" href="index.php?url=triage/ver/'.$value2[0]->getId().'">ver</a></li>';
+        }
+        $s=((int) $value2[1]>1) ? 's':'';
+        echo $total . '% '.$value2[1].' Voto'.$s.'</p><br>'.$ver;
+        if ($i==2) {
+            $i='';
+        }  elseif ($i!='') {
+            $i++;
+        }
+    }
+    echo '</div></div>';
+}
+?>

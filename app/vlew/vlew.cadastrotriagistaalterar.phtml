@@ -1,0 +1,22 @@
+
+
+<form method="post" action="index.php?url=cadastro/triagistaalterarfim/<?php echo $dadoscepc[2];?>">
+    <label class="formtopo">
+        Nome<br>
+        <input type="text" name="nome" id="texto"  class="form-control " required value="<?php echo $dadoscepc[3]->getNome();?>">
+    </label>
+    <label class="formtopo">
+        Email<br>
+        <input type="email" name="login" id="texto"  class="form-control " required value="<?php echo $dadoscepc[3]->getUsuario()->getLogin();?>">
+    </label>
+    <label class="formtopo">
+        <input type="radio" name="tipo" id="texto"  required value="2" <?php echo ($dadoscepc[3]->getUsuario()->getStatus()==2 or $dadoscepc[3]->getUsuario()->getStatus()==-2) ? "checked":""; ?>>
+        Triagista
+    </label>
+    <label class="formtopo">
+        <input type="radio" name="tipo" id="texto"   required value="3" <?php echo ($dadoscepc[3]->getUsuario()->getStatus()==3 or $dadoscepc[3]->getUsuario()->getStatus()==-3) ? "checked":""; ?>>
+        Administrador
+    </label>
+    <input type="submit" class="btn btn-primary">
+
+</form>

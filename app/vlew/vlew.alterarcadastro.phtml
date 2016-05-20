@@ -1,0 +1,114 @@
+<form method="post" action="index.php?url=cadastro/alterarfim"  enctype="multipart/form-data"	 >
+    <?php
+    $p = $dadoscepc[5];
+    if ($p->getTipo() == '0') {
+        echo '<label class="formtopo2"><input type="radio" name="tipo" class="usuario"  required value="0" checked>ELEITOR</label>';
+        echo '<label class="formtopo2"><input type="radio" name="tipo" class="usuario"  required value="1" >CANDIDATO</label>';
+    } else {
+        echo '<label class="formtopo2"><input type="radio" name="tipo" class="usuario"  required value="0">ELEITOR</label>';
+        echo '<label class="formtopo2"><input type="radio" name="tipo" class="usuario"  required value="1" checked>CANDIDATO</label>';
+    }
+    ?>
+    <label class="formtopo">
+        Nome conforme consta em seu RG 'Caso tenha apelido colocar no final entre aspas'<br>
+        <input type="text" name="nome" id="texto"  class="form-control " required value="<?php echo $p->getNome(); ?>">
+    </label>
+    <label class="formtopo">
+        Data de Nascimento<br>
+        <input type="text" name="nascimento" id="texto"  class="form-control  datan" required value="<?php echo $p->getNascimentoBrasil(); ?>">
+    </label>
+    <label class="formtopo">
+        CPF<br>
+        <input type="text" name="cpf" id="texto"  class="form-control " required value="<?php echo $p->getCpf(); ?>">
+    </label>
+    <label class="formtopo">
+        RG<br>
+        <input type="text" name="rg" id="texto"  class="form-control " required value="<?php echo $p->getRg(); ?>">
+    </label>
+    <label class="formtopo">
+        &Oacute;rg&atilde;o Expedidor<br>
+        <input type="text" name="orgao" id="texto"  class="form-control " required value="<?php echo $p->getOrgao(); ?>">
+    </label>
+    <label class="formtopo">
+        Telefonne<br>
+        <input type="text" name="telefone" id="texto"  class="form-control " required value="<?php echo $p->getFixo(); ?>">
+    </label>
+    <label class="formtopo">
+        Celular<br>
+        <input type="text" name="celular" id="texto"  class="form-control " required value="<?php echo $p->getCelular(); ?>">
+    </label>
+
+
+    <p>SEGMENTO CULTURAL: (somente uma opção)</p>   
+
+    <?php
+    foreach ($dadoscepc[3] as $value) {
+        $s = ($value->getId() == $p->getSegmento()->getId()) ? 'checked' : '';
+        echo '<label class="formtopo"><input type="radio" name="segmento" id="texto" '
+        . ' value="' . $value->getId() . '" required ' . $s . '>' . $value->getNome() . '</label>' . "\n";
+    }
+    ?>
+    <p>DECLARA&Ccedil;&Otilde;ES:</p>
+    <?php
+    foreach ($dadoscepc[4] as $value) {
+        if ($value->getTipo() == 2) {
+            echo '<div class="cadcepc">';
+        } elseif ($value->getTipo() == 1) {
+            echo '<div class="cadcepcu">';
+        }
+        $s = ($p->getDeclaracaoVerificar($value->getId())) ? 'checked' : '';
+        echo '<label class="formtopo"><input type="checkbox" name="declaracao' . $value->getId() . '" id="texto" '
+        . ' value="sim" required ' . $s . '>' . $value->getNome() . '</label>' . "\n";
+        if ($value->getTipo() > 0) {
+            echo '</div>';
+        }
+    }
+    ?>
+    <label class="formtopo">
+        <div class="cadcepc"  style="display: none">
+        CURR&Iacute;CULO RESUMIDO DE ATUA&Ccedil;&Atilde;O NO SEGMENTO CULTURAL: (3 mil caracteres)<br>
+        </div>
+        <div class="cadcepcu">
+        QUAL &Eacute; SUA ATUA&Ccedil;&Atilde;O NO SEGMENTO CULTURAL?
+        </div>
+        <textarea name="resumido" id="texto" rows="8" required><?php echo $p->getTexto()->getCurriculo(); ?></textarea>
+    </label>
+    <div class="cadcepc" <?php echo ($p->getTipo() == '0') ? 'style="display: none"' : ''; ?>>
+        <label class="formtopo">
+            PROPOSTA DE ATUA&Ccedil;&Atilde;O NO CONSELHO ESTADUAL DE POLITICA CULTURAL: (3 mil caracteres)<br>
+            <textarea name="proposta" id="texto" rows="8" required><?php echo $p->getTexto()->getProposta(); ?></textarea>
+        </label>
+        <label class="formtopo">
+            JUSTIFICATIVA DA SUA CANDIDATURA: (3 mil caracteres)<br>
+            <textarea name="justificativa" id="texto" rows="8" required><?php echo $p->getTexto()->getJustificativa(); ?></textarea>
+        </label>
+<?php
+foreach ($p->getAnexo() as $value) {
+    if ($value->getTipo() == 'foto') {
+        echo "<label class='caixatexto'>FOTOGRAFIA DE ROSTO ATUAL:</label>";
+        echo "<img src='{$value->getNome()}' class='fotoce'>";
+        echo '<input type="hidden" name="fotoa" value="' . $value->getNome() . '" >';
+    }
+}
+?>
+        <label class="formtopo">
+            FOTOGRAFIA DE ROSTO ATUAL (obrigat&oacute;rio):<br>
+            <input type="file" name="foto" id="texto" accept="image/*" class="form-control " required>
+            <input type="hidden" name="foto" id="texto" accept="image/*" class="form-control " required>
+        </label>
+    </div>
+<?php
+foreach ($p->getAnexo() as $value) {
+    if ($value->getTipo() == 'doc') {
+        echo "<label class='caixatexto'>DOCUMENTAÇÃO COMPLEMENTAR:<a href='{$value->getNome()}' download>Baixar</a></label>";
+        echo '<input type="hidden" name="documentacaoa" value="' . $value->getNome() . '" >';
+    }
+}
+?>
+    <label class="formtopo">
+        DOCUMENTA&Ccedil;&Atilde;O COMPLEMENTAR (opcional): <br>
+        <input type="file" name="documentacao" id="texto"  class="form-control ">
+    </label>
+    <input type="submit" class="btn btn-primary"  >
+
+</form>

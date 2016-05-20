@@ -1,0 +1,34 @@
+<?php
+//$p[] = new Triagista($id, $nome, $sagmento);
+$p = $dadoscepc[3];
+?>
+<h1>Lista de inscritos</h1>
+<h2 class="toph2">Total de inscrito: <?php echo $dadoscepc[5];?></h2>
+<table class="table table-condensed">
+    <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Segmento</th>
+        <th>Situa&ccedil;&atilde;o</th>
+        <th>Ver</th>
+    </tr>
+    <?php   
+    foreach ($p as $value) {
+        echo '<tr>';
+        echo "<td>{$value->getIdusuario()}</td>";
+        echo "<td>{$value->getNome()}</td>";
+        echo "<td>{$value->getSegmento()->getNome()}</td>";
+        if ($value->getStatus() == 0) {
+            echo "<td><a href='index.php?url=triage/triar/{$value->getId()}'>Triar</a></td>";
+        } elseif ($value->getStatus() < 0) {
+            echo "<td>Triando</td>";
+        } else {
+            echo "<td>Triado</td>";
+        }
+        echo "<td><a href='index.php?url=triage/ver/{$value->getId()}'>ver</a></td>";
+        echo '</tr>';
+    }
+    ?>
+
+</table>
+<?php    echo $dadoscepc[4];?>  

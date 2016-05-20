@@ -1,0 +1,301 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 09/10/2015, 14:10:28
+    Author     : guilherme.souza
+*/
+#left_column{
+    position: relative;
+    float: left;
+    
+
+}
+li{
+    list-style:none;
+    0
+}
+#right_column_2{
+    position: relative;
+    float: left;
+    width: 782px;
+}
+h1.atencao{
+    font-size: 10px !important;
+}
+div.home_search, div.div_midias_topo{
+    float: right !important;
+}
+#login{
+    display: none !important;
+}
+#resfinaldivv{
+    display: none;
+    margin-bottom: 25px;
+    float: left;
+    position: relative;
+    width: 100%;
+}
+.resfinal{
+    width: 100%;
+    text-align: left !important;
+    color: #003e65;
+    font-size: 19pt;
+    font-family: 'Open Sans', sans-serif;
+    margin: 10px 0 0 0 !important;
+    padding: 0 0 !important;
+    font-weight: bold;
+}
+.resfinal2{
+    cursor: pointer;
+    width: 100%;
+    text-align: left !important;
+    color: #003e65;
+    font-size: 15pt;
+    font-family: 'Open Sans', sans-serif;
+    margin: 10px 0 0 0 !important;
+    padding: 0 0 !important;
+    font-weight: bold;
+}
+.presfinal1{
+    width: 100%;
+    text-align: left !important;
+    color: #1a5c95;
+    font-size: 14pt;
+    font-family: 'Open Sans', sans-serif;
+    margin: 10px 0 0 0 !important;
+    padding: 0 0 !important;
+    font-weight: bold;
+}
+.presfinal2{
+    width: 100%;
+    text-align: left !important;
+    color: #1a5c95;
+    font-size: 11pt;
+    font-family: 'Open Sans', sans-serif;
+    margin: 10px 0 0 0 !important;
+    padding: 0 0 !important;
+    font-weight: bold;
+}
+.presfinal{
+    width: 100%;
+    text-align: left !important;
+    color: #545454;
+    font-size: 9pt;
+    font-family: 'Open Sans', sans-serif;
+    margin: 10px 0 0 0 !important;
+    padding: 0 0 !important;
+    font-weight: bold;
+}
+.resfinalimg{
+    margin: 0 0 !important;
+    padding: 0 0 !important;
+}
+.toph2{
+    padding: 10px 0;
+}
+.titulocad{
+    font-size: 18px
+}
+table.tabela tr:hover{
+    background-color: #ddd;
+}
+table.tabela tr th,
+table.tabela tr td{
+    border: 1px solid #066cac;
+    padding: 5px 5px
+    
+}
+.modal-body p{
+    position: relative;
+    float: left
+}
+div.candidato2{
+    position: absolute;
+    float: left;
+    left: 196PX
+    
+}
+div.candidato a img{
+    position: relative;
+    float: left;
+    
+}
+div.candidato a p{
+    position: relative;
+    float: left;
+    color: #4f7ea7;
+    width: 100px !important;
+    margin:7px 1px 0 0 !important;
+
+}
+a.candidatopro{
+    width: 100% !important;
+}
+div.candidato a{
+    top: 8px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    width: 140px;
+    position: relative;
+    float: left;
+    margin-left: 8px;
+}
+img.candidatoimg{
+    width: 166px;
+position: absolute;
+    clip: rect(0px,166px,166px,0px);
+}
+p.candidatonome{
+    margin:0 0 0 8px !important;
+    color: #004066;
+    position: relative;
+    float: left;
+    width: 250px !important;
+    font-size: 18px; 
+    font-weight: bold;
+}
+p.candidatoidade{
+    margin:0 0 0 8px !important;
+    color: #4f7ea7;
+    position: relative;
+    float: left;
+    width: 250px !important;
+    font-size: 14px; 
+    font-weight: bold;
+}
+div.candidato{
+    font-family: 'Open Sans', sans-serif;
+    background-color: #ededed;
+    width: 500px;
+    height: 240px;
+    position: relative;
+    float: left;
+    padding: 35px 28px;
+    margin-bottom: 50px;
+    margin-left: 82px;
+
+}
+div.candidatop{
+    display: none;
+}
+label.formtopo, p{
+    width: 100% !important;
+    position: relative;
+    float: left; 
+    color: #444;
+    margin: 10px 10px 0 10px;
+}
+label.formtopo2{
+    position: relative;
+    float: left; 
+    color: #444;
+    margin: 10px 10px 0 10px ;
+}
+input[type=radio]{
+    background: #fff no-repeat center center;
+}
+input[type=submit]{
+    position: relative;
+    float: left; 
+    margin: 10px 10px 10px 10px ;
+    padding: 8px 8px
+}
+input.default, textarea{
+    background-color: #dae2f0;
+    color: #666;
+}
+textarea {
+    width:90%;
+    height: 150px;
+    padding: 7px 12px;
+}
+#cadcepc{
+    display: none
+}
+label.ver samp{
+    color: #777
+}
+label.ver{
+    width: 100%; position: relative;float: left; margin-top: 8px; color: #444;
+}
+p.p1{
+    width: 100%; position: relative;float: left; margin-top: 8px;
+}
+label.caixatexto{
+    width: 100%; position: relative;float: left; margin-top:  15px; 
+}
+label.caixatexto samp{
+    width: 100%; position: relative;float: left; height: 300px; overflow-x: hidden; 
+    border: 1px #999 solid;color: #777
+}
+img.fotoce{
+    width: 400px; position: relative;float: left; height: 300px; overflow-x: hidden;
+}
+
+#right_column_2{
+    /*background-color: #6c8dc4;*/
+}
+table, th, td {
+    border: 1px solid black;
+}
+table {
+    border-collapse: collapse;
+}
+td, th{
+    padding: 5px 10px;
+    text-align: center
+}
+.cepc h1 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+.cepc p {
+    text-align: justify;
+}
+p.title_6.titulo {
+    text-align: left;
+    margin-bottom: 20px;
+}
+div#wrap {
+    padding: 0 30px 0 10px;
+}
+
+.listaarquivos li a, .listaarquivos li p {
+    float: left;
+    position: relative;
+}
+.listaarquivos li p {
+    max-width: 350px;
+    min-width: 350px;
+    margin-right: 30px;
+}
+.listaarquivos li {
+    width: 100%;
+    position: relative;
+    float: left;
+    margin-bottom: 40px;
+}
+.paginacao li{
+    position: relative;
+    float: left;
+    border: 1px solid #999;
+    margin: 25px 8px
+}
+.paginacao p{
+    margin: 1PX 0;
+    padding: 0 10px;
+}
+.paginacao a{
+    text-decoration: none;
+    color: #000;
+    padding: 15px 10px;
+}
+.paginacao li:hover{
+    text-decoration: none;
+    color: #fff;
+    background-color: #ddd;
+}

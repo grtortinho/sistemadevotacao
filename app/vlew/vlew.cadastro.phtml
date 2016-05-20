@@ -1,0 +1,98 @@
+<form method="post" action="index.php?url=cadastro/fim"  enctype="multipart/form-data"   >
+    <label class="formtopo2"><input type="radio"  name="tipo" class="usuario"  required value="0">ELEITOR</label>
+    <label class="formtopo2"><input type="radio"  name="tipo" class="usuario"  required value="1">CANDIDATO</label>
+    <label class="formtopo">
+        Email<br>
+        <input type="email" name="login" id="texto"  class="form-control " required>
+    </label>
+    <label class="formtopo">
+        Senha<br>
+        <input type="password" name="senha" id="senha"  class="form-control " required>
+    </label>
+    <label class="formtopo">
+        Confirmar senha<br>
+        <input type="password" name="csenha" id="csenha"  class="form-control " required>
+    </label>
+    <label class="formtopo">
+        Nome conforme consta em seu RG  'Caso tenha apelido colocar no final entre aspas'<br>
+        <input type="text" name="nome" id="texto"  class="form-control " required>
+    </label>
+    <label class="formtopo">
+        Data de Nascimento<br>
+        <input type="text" name="nascimento" id="texto"   class="form-control  datan" required>
+    </label>
+    <label class="formtopo">
+        CPF<br>
+        <input type="text" name="cpf" id="texto"  class="form-control " required>
+    </label>
+    <label class="formtopo">
+        RG<br>
+        <input type="text" name="rg" id="texto"  class="form-control " required>
+    </label>
+    <label class="formtopo">
+        &Oacute;rg&atilde;o Expedidor<br>
+        <input type="text" name="orgao" id="texto"  class="form-control " required>
+    </label>
+    <label class="formtopo">
+        Telefone<br>
+        <input type="text" name="telefone" id="texto"  class="form-control " required>
+    </label>
+    <label class="formtopo">
+        Celular<br>
+        <input type="text" name="celular" id="texto"  class="form-control " required>
+    </label>
+
+
+    <p>SEGMENTO CULTURAL: (somente uma op&ccedil;&atilde;o)</p>   
+
+    <?php
+    foreach ($dadoscepc[3] as $value) {
+        echo '<label class="formtopo"><input type="radio" name="segmento" id="texto" '
+        . ' value="' . $value->getId() . '" required>' . $value->getNome() . '</label>' . "\n";
+    }
+    ?>
+    <p>DECLARA&Ccedil;&Otilde;ES:</p>
+    <?php
+    foreach ($dadoscepc[4] as $value) {
+        if ($value->getTipo() == 2) {
+            echo '<div class="cadcepc">';
+        } elseif ($value->getTipo() == 1) {
+            echo '<div class="cadcepcu">';
+        }
+        echo '<label class="formtopo"><input type="checkbox" name="declaracao' . $value->getId() . '" id="texto" '
+        . ' value="sim" required>' . $value->getNome() . '</label>' . "\n";
+        if ($value->getTipo() > 0) {
+            echo '</div>';
+        }
+    }
+    ?>
+    <label class="formtopo">
+        <div class="cadcepc"  style="display: none">
+        CURR&Iacute;CULO RESUMIDO DE ATUA&Ccedil;&Atilde;O NO SEGMENTO CULTURAL: (3 mil caracteres)<br>
+        </div>
+        <div class="cadcepcu">
+        QUAL &Eacute; SUA ATUA&Ccedil;&Atilde;O NO SEGMENTO CULTURAL?
+        </div>
+        <textarea name="resumido" id="texto" rows="8" required></textarea>
+    </label>
+    <div class="cadcepc" >
+        <label class="formtopo">
+            PROPOSTA DE ATUA&Ccedil;&Atilde;O NO CONSELHO ESTADUAL DE POLITICA CULTURAL: (3 mil caracteres)<br>
+            <textarea name="proposta" id="texto" rows="8" required></textarea>
+        </label>
+        <label class="formtopo">
+            JUSTIFICATIVA DA SUA CANDIDATURA: (3 mil caracteres)<br>
+            <textarea name="justificativa" id="texto" rows="8" required></textarea>
+        </label>
+        <label class="formtopo">
+            FOTOGRAFIA DE ROSTO ATUAL (obrigat&oacute;rio):<br>
+            <input type="file" name="foto" id="texto" accept="image/*" class="form-control " required>
+        </label>
+    </div>
+    <label class="formtopo">
+        DOCUMENTA&Ccedil;&Atilde;O COMPLEMENTAR (opcional): <br>
+        <input type="file" name="documentacao" id="texto"  class="form-control ">
+    </label>
+    <input type="submit" class="btn btn-primary"  class="btn btn-primary">
+
+</form>
